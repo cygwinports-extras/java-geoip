@@ -1,0 +1,25 @@
+inherit java
+
+DESCRIPTION="Java GeoIP database interface"
+HOMEPAGE="http://www.maxmind.com/app/java"
+SRC_URI="http://www.maxmind.com/download/geoip/api/java/GeoIPJava-${PV}.zip"
+SRC_DIR="GeoIPJava-${PV}"
+
+pkgclassdir="com/maxmind/geoip"
+
+src_compile() {
+	cd ${B}
+	verbose ${JAVAC} -d . ${S}/source/${pkgclassdir}/*.java || error "java compile failed"
+	verbose ${JAR} cf geoip-${PV}.jar ${pkgclassdir}/*.class || error "jar failed"
+}
+
+src_test() {
+	cd ${B}
+	verbose ${JAVAC} -d . ${S}/*.java || error "java test compile failed"
+	verbose ${JAVA} -classpath geoip-${PV}.jar:. CountryLookupTest || error "java test failed"
+}
+
+src_install() {
+	dojar ${B}/geoip-${PV}.jar
+	dosym geoip-${PV}.jar ${JAVA_DIR}/geoip.jar
+}
