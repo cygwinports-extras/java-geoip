@@ -1,0 +1,55 @@
+java-geoip
+------------------------------------------
+Java interface for the MaxMind GeoIP database.
+
+Runtime requirements:
+  classpath-0.93-1
+  jamvm-1.4.5-1
+  libGeoIP1-1.4.3-1  (for GeoIP database)
+
+Build requirements:
+(besides corresponding -devel packages)
+  cygwin-1.5.24-2
+  cygport-0.3.6-1
+  fastjar-0.94-1
+  jikes-1.22-4
+
+Canonical website:
+  http://www.maxmind.com/app/java
+
+Canonical download:
+  http://www.maxmind.com/download/geoip/api/java/
+
+-------------------------------------------
+
+Build instructions:
+  unpack java-geoip-1.2.1-X-src.tar.bz2
+    if you use setup to install this src package, it will be
+	 unpacked under /usr/src automatically
+  cd /usr/src
+  cygport ./java-geoip-1.2.1-X.cygport all
+
+This will create:
+  /usr/src/java-geoip-1.2.1-X-src.tar.bz2
+  /usr/src/java-geoip-1.2.1-X.tar.bz2
+
+-------------------------------------------
+
+Files included in the binary package:
+
+  /usr/share/doc/Cygwin/java-geoip-1.2.1.README
+  /usr/share/doc/java-geoip-1.2.1/Changes
+  /usr/share/doc/java-geoip-1.2.1/README
+  /usr/share/java/geoip-1.2.1.jar
+  /usr/share/java/geoip.jar
+
+------------------
+
+Port Notes:
+
+----- version 1.2.1-1 -----
+Initial release for Cygwin.
+
+
+Cygwin port maintained by:
+http://cygwinports.dotsrc.org/

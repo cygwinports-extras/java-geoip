@@ -1,0 +1,4 @@
+category: Java Net
+requires: classpath jamvm libGeoIP1
+sdesc: "Java GeoIP interface"
+ldesc: "Java interface for the MaxMind GeoIP database"
