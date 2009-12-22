@@ -1,4 +1,4 @@
-category: Java Net
-requires: classpath jamvm libGeoIP1
+category: Java
+requires: geoip
 sdesc: "Java GeoIP interface"
 ldesc: "Java interface for the MaxMind GeoIP database"

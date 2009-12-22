@@ -1,0 +1,31 @@
+inherit java
+
+DESCRIPTION="Java GeoIP database interface"
+HOMEPAGE="http://www.maxmind.com/app/java"
+SRC_URI="http://www.maxmind.com/download/geoip/api/java/GeoIPJava-${PV}.zip"
+SRC_DIR="GeoIPJava-${PV}"
+
+PATCH_URI="1.2.3-usr-prefix.patch"
+
+pkgclassdir="com/maxmind/geoip"
+
+src_compile() {
+	lndirs
+	cd ${B}
+	mkdir -p classes javadoc
+	cygjavac -d classes source/${pkgclassdir}/*.java
+	cygjar cf geoip-${PV}.jar -C classes ${pkgclassdir}
+	cygjavadoc -d javadoc source/${pkgclassdir}/*.java
+}
+
+src_test() {
+	cd ${B}
+	cygjavac -classpath geoip-${PV}.jar CountryLookupTest.java
+	cygjava -classpath geoip-${PV}.jar:. CountryLookupTest
+}
+
+src_install() {
+	cd ${B}
+	dojar geoip-${PV}.jar
+	dojavadoc javadoc/
+}
