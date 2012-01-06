@@ -5,7 +5,7 @@ HOMEPAGE="http://www.maxmind.com/app/java"
 SRC_URI="http://www.maxmind.com/download/geoip/api/java/GeoIPJava-${PV}.zip"
 SRC_DIR="GeoIPJava-${PV}"
 
-PATCH_URI="1.2.3-usr-prefix.patch"
+PATCH_URI="1.2.5-usr-prefix.patch"
 
 pkgclassdir="com/maxmind/geoip"
 
@@ -15,13 +15,16 @@ src_compile() {
 	mkdir -p classes javadoc
 	cygjavac -d classes source/${pkgclassdir}/*.java
 	cygjar cf geoip-${PV}.jar -C classes ${pkgclassdir}
-	cygjavadoc -d javadoc source/${pkgclassdir}/*.java
+	cygjavadoc -d javadoc -sourcepath source -subpackages ${pkgclassdir////.}
 }
 
 src_test() {
 	cd ${B}
-	cygjavac -classpath geoip-${PV}.jar CountryLookupTest.java
-	cygjava -classpath geoip-${PV}.jar:. CountryLookupTest
+	cygjavac -classpath classes -d classes *.java
+	cygjava -classpath classes BenchmarkGeoIP
+	cygjava -classpath classes ASNumLookupTest maxmind.com
+	cygjava -classpath classes CityLookupTest maxmind.com
+	cygjava -classpath classes CountryLookupTest
 }
 
 src_install() {

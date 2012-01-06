@@ -1,4 +1,4 @@
 category: Java
-requires: geoip
+requires: GeoIP-database
 sdesc: "Java GeoIP interface"
 ldesc: "Java interface for the MaxMind GeoIP database"

@@ -1,0 +1,141 @@
+--- origsrc/GeoIPJava-1.2.5/ASNumLookupTest.java	2011-08-23 07:28:33.000000000 -0500
++++ src/GeoIPJava-1.2.5/ASNumLookupTest.java	2012-01-05 20:37:45.739954100 -0600
+@@ -10,7 +10,7 @@ import java.io.IOException;
+ class ASNumLookupTest {
+     public static void main(String[] args) {
+ 	try {
+-	    LookupService asnl = new LookupService("/usr/local/share/GeoIP/GeoIPASNum.dat");
++	    LookupService asnl = new LookupService("/usr/share/GeoIP/GeoIPASNum.dat");
+ 	    System.out.println("ASNum: " + asnl.getOrg(args[0]));
+ 	    asnl.close();
+ 	}
+--- origsrc/GeoIPJava-1.2.5/ASNumLookupTestV6.java	2011-08-23 06:57:20.000000000 -0500
++++ src/GeoIPJava-1.2.5/ASNumLookupTestV6.java	2012-01-05 20:38:03.415965200 -0600
+@@ -10,7 +10,7 @@ import java.io.IOException;
+ class ASNumLookupTestV6 {
+     public static void main(String[] args) {
+ 	try {
+-	    LookupService asnl = new LookupService("/usr/local/share/GeoIP/GeoIPASNumv6.dat");
++	    LookupService asnl = new LookupService("/usr/share/GeoIP/GeoIPASNumv6.dat");
+ 	    System.out.println("ASNum V6: " + asnl.getOrgV6(args[0]));
+ 	    asnl.close();
+ 	}
+--- origsrc/GeoIPJava-1.2.5/BenchmarkGeoIP.java	2012-01-05 21:29:56.173004700 -0600
++++ src/GeoIPJava-1.2.5/BenchmarkGeoIP.java	2012-01-05 20:35:13.000000000 -0600
+@@ -5,7 +5,7 @@ class BenchmarkGeoIP {
+ 
+ static void testGeoipCountry(int flags,String msg,int numlookups){
+   try {
+-  LookupService cl = new LookupService("/usr/local/share/GeoIP/GeoIP.dat",flags);
++  LookupService cl = new LookupService("/usr/share/GeoIP/GeoIP.dat",flags);
+   int i4 = 0;
+   long t1 = System.currentTimeMillis();
+   for (int i2 = 0;i2 < numlookups;i2++){
+@@ -23,7 +23,7 @@ static void testGeoipCountry(int flags,S
+ 
+ static void testGeoipRegion(int flags,String msg,int numlookups){
+   try {
+-  LookupService cl = new LookupService("/usr/local/share/GeoIP/GeoIPRegion.dat",flags);
++  LookupService cl = new LookupService("/usr/share/GeoIP/GeoIPRegion.dat",flags);
+   int i4 = 0;
+   long t1 = System.currentTimeMillis();
+   for (int i2 = 0;i2 < numlookups;i2++){
+@@ -41,7 +41,7 @@ static void testGeoipRegion(int flags,St
+ 
+ static void testGeoipCity(int flags,String msg,int numlookups){
+   try {
+-  LookupService cl = new LookupService("/usr/local/share/GeoIP/GeoIPCity.dat",flags);
++  LookupService cl = new LookupService("/usr/share/GeoIP/GeoIPCity.dat",flags);
+   int i4 = 0;
+   long t1 = System.currentTimeMillis();
+   for (int i2 = 0;i2 < numlookups;i2++){
+--- origsrc/GeoIPJava-1.2.5/CityLookupTest.java	2012-01-05 21:29:56.175004800 -0600
++++ src/GeoIPJava-1.2.5/CityLookupTest.java	2012-01-05 20:35:13.000000000 -0600
+@@ -9,7 +9,7 @@ import java.io.IOException;
+ class CityLookupTest {
+     public static void main(String[] args) {
+ 	try {
+-	    LookupService cl = new LookupService("/usr/local/share/GeoIP/GeoIPCity.dat",
++	    LookupService cl = new LookupService("/usr/share/GeoIP/GeoIPCity.dat",
+ 					LookupService.GEOIP_MEMORY_CACHE );
+             Location l1 = cl.getLocation("213.52.50.8");
+             Location l2 = cl.getLocation(args[0]);
+--- origsrc/GeoIPJava-1.2.5/CityLookupTestV6.java	2011-08-23 06:57:20.000000000 -0500
++++ src/GeoIPJava-1.2.5/CityLookupTestV6.java	2012-01-05 20:42:45.621106400 -0600
+@@ -9,7 +9,7 @@ import java.io.IOException;
+ class CityLookupTestV6 {
+     public static void main(String[] args) {
+ 	try {
+-	    LookupService cl = new LookupService("/usr/local/share/GeoIP/GeoLiteCityv6.dat",
++	    LookupService cl = new LookupService("/usr/share/GeoIP/GeoLiteCityv6.dat",
+ 					LookupService.GEOIP_MEMORY_CACHE );
+             Location l1 = cl.getLocationV6("::213.52.50.8");
+             Location l2 = cl.getLocationV6(args[0]);
+--- origsrc/GeoIPJava-1.2.5/CountryLookupTest.java	2012-01-05 21:29:56.178005000 -0600
++++ src/GeoIPJava-1.2.5/CountryLookupTest.java	2012-01-05 20:35:13.000000000 -0600
+@@ -15,7 +15,7 @@ class CountryLookupTest {
+ 	    // String dir = System.getProperty("user.dir"); 
+ 
+ 	    // Uncomment for Linux
+-	    String dir = "/usr/local/share/GeoIP";
++	    String dir = "/usr/share/GeoIP";
+ 
+ 	    String dbfile = dir + sep + "GeoIP.dat"; 
+ 	    // You should only call LookupService once, especially if you use
+--- origsrc/GeoIPJava-1.2.5/CountryLookupTestV6.java	2011-08-23 06:57:20.000000000 -0500
++++ src/GeoIPJava-1.2.5/CountryLookupTestV6.java	2012-01-05 20:43:03.946154500 -0600
+@@ -15,7 +15,7 @@ class CountryLookupTestV6 {
+ 	    // String dir = System.getProperty("user.dir"); 
+ 
+ 	    // Uncomment for Linux
+-	    String dir = "/usr/local/share/GeoIP";
++	    String dir = "/usr/share/GeoIP";
+ 
+ 	    String dbfile = dir + sep + "GeoIPv6.dat"; 
+ 	    // You should only call LookupService once, especially if you use
+--- origsrc/GeoIPJava-1.2.5/NetSpeedCellLookupTest.java	2011-08-23 07:06:03.000000000 -0500
++++ src/GeoIPJava-1.2.5/NetSpeedCellLookupTest.java	2012-01-05 20:44:41.207717500 -0600
+@@ -10,7 +10,7 @@ import java.io.IOException;
+ class NetSpeedCellLookupTest {
+     public static void main(String[] args) {
+ 	try {
+-	    LookupService ns = new LookupService("/usr/local/share/GeoIP/GeoIPNetSpeedCell.dat");
++	    LookupService ns = new LookupService("/usr/share/GeoIP/GeoIPNetSpeedCell.dat");
+ 	    System.out.println("XX: " + ns.getOrg(args[0]));
+ 	    ns.close();
+ 	}
+--- origsrc/GeoIPJava-1.2.5/NetspeedLookupTest.java	2012-01-05 21:29:56.181005100 -0600
++++ src/GeoIPJava-1.2.5/NetspeedLookupTest.java	2012-01-05 20:35:13.000000000 -0600
+@@ -9,7 +9,7 @@ import java.io.IOException;
+ class NetspeedLookupTest {
+     public static void main(String[] args) {
+         try {
+-            LookupService cl = new LookupService("/usr/local/share/GeoIP/GeoIPNetspeed.dat");
++            LookupService cl = new LookupService("/usr/share/GeoIP/GeoIPNetspeed.dat");
+             if (args.length > 0) {
+                 int speed = cl.getID(args[0]);
+ 	        if (speed == cl.GEOIP_UNKNOWN_SPEED){
+--- origsrc/GeoIPJava-1.2.5/OrgLookupTest.java	2012-01-05 21:29:56.183005200 -0600
++++ src/GeoIPJava-1.2.5/OrgLookupTest.java	2012-01-05 20:35:13.000000000 -0600
+@@ -10,8 +10,8 @@ import java.io.IOException;
+ class OrgLookupTest {
+     public static void main(String[] args) {
+ 	try {
+-	    LookupService orgl = new LookupService("/usr/local/share/GeoIP/GeoIPOrg.dat");
+-	    LookupService ispl = new LookupService("/usr/local/share/GeoIP/GeoIPISP.dat");
++	    LookupService orgl = new LookupService("/usr/share/GeoIP/GeoIPOrg.dat");
++	    LookupService ispl = new LookupService("/usr/share/GeoIP/GeoIPISP.dat");
+ 	    System.out.println("Organization: " + orgl.getOrg(args[0]) +
+ 			       "\tISP: " + ispl.getOrg(args[0]));
+ 	    orgl.close();
+--- origsrc/GeoIPJava-1.2.5/RegionLookupTest.java	2012-01-05 21:29:56.185005400 -0600
++++ src/GeoIPJava-1.2.5/RegionLookupTest.java	2012-01-05 20:35:13.000000000 -0600
+@@ -8,7 +8,7 @@ import java.io.IOException;
+ class RegionLookupTest {
+     public static void main(String[] args) {
+         try {
+-            LookupService cl = new LookupService("/usr/local/share/GeoIP/GeoIPRegion.dat");
++            LookupService cl = new LookupService("/usr/share/GeoIP/GeoIPRegion.dat");
+             Region l = cl.getRegion(args[0]);
+             System.out.println("Country Code: " + l.countryCode);
+             System.out.println("Country Name: " + l.countryName);
