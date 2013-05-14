@@ -1,11 +1,20 @@
 inherit java
 
-DESCRIPTION="Java GeoIP database interface"
+NAME="java-geoip"
+VERSION=1.2.9
+RELEASE=1
+CATEGORY="Java"
+SUMMARY="Java GeoIP interface"
+DESCRIPTION="Java interface for the MaxMind GeoIP database"
 HOMEPAGE="http://www.maxmind.com/app/java"
-SRC_URI="http://www.maxmind.com/download/geoip/api/java/GeoIPJava-${PV}.zip"
-SRC_DIR="GeoIPJava-${PV}"
-
+SRC_URI="http://www.maxmind.com/download/geoip/api/java/GeoIPJava-${VERSION}.zip"
+SRC_DIR="GeoIPJava-${VERSION}"
 PATCH_URI="1.2.5-usr-prefix.patch"
+
+PKG_NAMES="${NAME} javadoc-geoip"
+java_geoip_REQUIRES="GeoIP-database"
+java_geoip_CONTENTS="usr/share/doc/ ${JAVA_DIR#/}"
+javadoc_geoip_CONTENTS=${JAVADOC_DIR#/}
 
 pkgclassdir="com/maxmind/geoip"
 
@@ -29,6 +38,6 @@ src_test() {
 
 src_install() {
 	cd ${B}
-	dojar geoip-${PV}.jar
+	dojar geoip-${VERSION}.jar
 	dojavadoc javadoc/
 }

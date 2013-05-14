@@ -1,4 +1,0 @@
-category: Java
-requires: GeoIP-database
-sdesc: "Java GeoIP interface"
-ldesc: "Java interface for the MaxMind GeoIP database"
